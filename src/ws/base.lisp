@@ -236,3 +236,5 @@
               (replace data extended-buf :start1 2 :end2 (- read-bytes 2)))
             (read-sequence data stream :start read-bytes)
             (return data)))))))
+
+(push :wsd-loop-fixed *features*)
