@@ -186,12 +186,9 @@
             (bt:make-thread
              (lambda ()
                (unwind-protect
-                    (handler-case
                         (loop for frame = (read-websocket-frame stream)
                               while frame
                               do (parse client frame))
-                      (error (e)
-                        (emit :error client e)))
                  (close-connection client)))
              :name "websocket client read thread"
              :initial-bindings `((*standard-output* . ,*standard-output*)
